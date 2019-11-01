@@ -13,11 +13,14 @@ import (
 
 func main() {
 	fmt.Println("Hello  Http!")
-	//var base_url = "http://localhost:23333/around-api"
-	//http_post_json(base_url+"/content/index", "page=1")
+	var base_url = "http://localhost:23333/around-api"
+	http_post_json(base_url+"/content/index", "page=1")
 
-	samplePost()
-
+	// song := make(map[string]string)
+	// song["name"] = "李白"
+	// song["timelength"] = "128"
+	// song["author"] = "李荣浩"
+	// samplePost(song)
 }
 
 //http get
@@ -87,12 +90,9 @@ func http_post_json(url string, params string) {
 type JsonPostSample struct {
 }
 
-func samplePost() {
-	song := make(map[string]interface{})
-	song["name"] = "李白"
-	song["timelength"] = 128
-	song["author"] = "李荣浩"
-	bytesData, err := json.Marshal(song)
+func samplePost(params map[string]string) {
+
+	bytesData, err := json.Marshal(params)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
