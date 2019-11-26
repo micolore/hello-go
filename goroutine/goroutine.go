@@ -29,10 +29,15 @@ func main() {
 
 func say(s string) {
 
+	for x := 0; x < 10; x++ {
+		go cal(x, x+1)
+	}
+	time.Sleep(time.Second * 2)
 	for i := 0; i < 5; i++ {
 		time.Sleep(100 * time.Millisecond)
 		fmt.Println(s)
 	}
+
 }
 
 func sum(s []int, c chan int) {
@@ -44,4 +49,8 @@ func sum(s []int, c chan int) {
 	}
 	c <- sum //把sum发送给c
 
+}
+
+func cal(a, b int) {
+	fmt.Println("value:", a+b)
 }

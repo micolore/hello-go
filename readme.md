@@ -24,5 +24,7 @@
  1. fasthttp
 
 
-
+#  参考 
+[《Go语言标准库》The Golang Standard Library by Example](https://github.com/polaris1119/The-Golang-Standard-Library-by-Example)     
+[go语法](https://www.jianshu.com/p/bed39de53087)  
 
