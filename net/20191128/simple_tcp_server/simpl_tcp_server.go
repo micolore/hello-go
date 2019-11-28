@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"net"
+	"syscall"
 )
 
 const maxRead = 25
@@ -35,6 +36,8 @@ func connectionHandler(conn net.Conn) {
 		switch err {
 		case nil:
 			handleMsg(length, err, ibuf)
+		case syscall.EAGAIN: // try again
+			continue
 		default:
 			goto DISCONECT
 		}
@@ -45,8 +48,9 @@ DISCONECT:
 	println("closed connection ", connFrom)
 	checkError(err, "Close:")
 }
+
 func sayHello(conn net.Conn) {
-	obuf := []byte{'L', 'E'}
+	obuf := []byte{'L', 'e', 't', '\'', 's', ' ', 'G', 'O', '!', '\n'}
 	write, err := conn.Write(obuf)
 	checkError(err, "write : write "+string(write)+"bytes.")
 }
