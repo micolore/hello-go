@@ -18,6 +18,7 @@ func main() {
 	hostAndPort := fmt.Sprintf("%s:%s", flag.Arg(0), flag.Arg(1))
 	listener := initServer(hostAndPort)
 	for {
+		fmt.Println("hello .....")
 		conn, err := listener.Accept()
 		checkError(err, "Accept")
 		go connectionHandler(conn)
