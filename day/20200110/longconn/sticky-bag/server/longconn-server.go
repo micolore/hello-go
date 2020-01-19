@@ -37,7 +37,7 @@ func main() {
 		fmt.Println("wow  have a new client connected! ", tcpConn.RemoteAddr().String())
 		go handleConn(tcpConn)
 
-		go write(tcpConn)
+		//go write(tcpConn)
 
 	}
 
