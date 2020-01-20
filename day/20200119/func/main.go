@@ -59,4 +59,35 @@ func main() {
 	paramFunSubValue := paramFunc(paramFuncValue, sub)
 	fmt.Printf("paramFunAddValue params value:%d return value:%d \n", paramFuncValue, paramFunAddValue)
 	fmt.Printf("paramFunSubValue params value:%d return value:%d \n", paramFuncValue, paramFunSubValue)
+
+	dc := deferClose()
+	fmt.Println("dc value is", dc)
+
+	forNoneFunc()
+}
+
+func deferClose() (r int) {
+	//闭包对捕获的外部变量并不是传值的方式访问，而是以引用的方式访问
+	fmt.Println("deferClose start r value is :", r)
+	defer func() {
+		fmt.Println("deferClose none name function value is:", r)
+		r++
+
+	}()
+	fmt.Println("deferClose end r value is :", r)
+	return 23
+}
+
+func forNoneFunc() {
+
+	for i := 0; i < 5; i++ {
+		i := i
+		defer func() { println(i) }()
+	}
+
+	for i := 0; i < 5; i++ {
+		defer func(p int) {
+			fmt.Println(p)
+		}(i)
+	}
 }
