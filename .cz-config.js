@@ -31,7 +31,7 @@ module.exports = {
         body: '请输入长说明，可使用"|"换行(可选)：\n',
         breaking: '非兼容性说明 (可选):\n',
         footer: '关联关闭的issue，例如：#31, #34(可选):\n',
-        confirmCommit: '确定提交注释?'
+        confirmCommit: '确定提交注S?'
     },
 
     allowCustomScopes: true,
