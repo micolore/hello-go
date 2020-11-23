@@ -52,7 +52,6 @@ type EmptyCtx int
 
 func (e *EmptyCtx) Deadline(deadline time.Time, ok bool) {
 	return
-
 }
 
 func (e *EmptyCtx) Done() <-chan struct{} {
